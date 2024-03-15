@@ -351,7 +351,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Algerian" size="45" style="1"/>
+              <Font name="Algerian" size="40" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="cc" red="ff" type="rgb"/>
@@ -361,7 +361,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="200" y="11" width="680" height="50"/>
+              <AbsoluteConstraints x="210" y="40" width="680" height="50"/>
             </Constraint>
           </Constraints>
         </Component>

@@ -230,11 +230,11 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         cantidadCola2Show.setText("0");
         Panel.add(cantidadCola2Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 80, 60, 20));
 
-        jLabel6.setFont(new java.awt.Font("Algerian", 1, 45)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Algerian", 1, 40)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 204, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("MULTIVERSE SHOWDOWN");
-        Panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 11, 680, 50));
+        Panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 680, 50));
 
         desicion.setBackground(new java.awt.Color(255, 255, 255));
         desicion.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
