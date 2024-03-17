@@ -48,7 +48,7 @@ public class Cola {
         return size == 0 || pfirst == null;
     }
     
-    public void encolar(Competidor comp) {
+    public void encolar(Personaje comp) {
         Nodo nuevo_nodo = new Nodo();
         nuevo_nodo.setInfo(comp);
 
@@ -71,7 +71,7 @@ public class Cola {
         }
     }
     
-    public Competidor infoCabeza() {
+    public Personaje infoCabeza() {
         return pfirst.getInfo();
     }
 }

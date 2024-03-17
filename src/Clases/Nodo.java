@@ -11,7 +11,7 @@ package Clases;
  */
 public class Nodo {
     
-    private Competidor competidor;
+    private Personaje competidor;
     private Nodo next;
     
     public Nodo() {
@@ -27,11 +27,11 @@ public class Nodo {
         this.next = next;
     }
     
-    public Competidor getInfo() {
+    public Personaje getInfo() {
         return competidor;
     }
     
-    public void setInfo(Competidor competidor) {
+    public void setInfo(Personaje competidor) {
         this.competidor = competidor;
     }
 }
