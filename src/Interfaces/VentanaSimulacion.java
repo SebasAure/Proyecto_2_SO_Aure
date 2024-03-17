@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Clases.Administrador;
 import Clases.Cola;
 import Clases.Personaje;
 import javax.swing.JOptionPane;
@@ -14,8 +15,10 @@ import javax.swing.JOptionPane;
  * @author sebas
  */
 public class VentanaSimulacion extends javax.swing.JFrame {
-
+    public static Administrador admin;
     public static Personaje competidor;
+    public static int idDistintivoNK;
+    public static int idDistintivoCN;
     //Colas Nickelodeon
     public static Cola colaExcepcionalesNK;
     public static Cola colaPromediosNK;
@@ -27,11 +30,19 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static Cola colaDeficientesCN;
     public static Cola colaRefuerzoCN;
     
+    public static Personaje[] personajesInicialesNK;
+    public static Personaje[] personajesInicialesCN;
+    
     
     
     
     public VentanaSimulacion() {
         initComponents();
+        this.idDistintivoCN = 0;
+        this.idDistintivoCN = 0;
+        this.personajesInicialesNK = new Personaje[20];
+        this.personajesInicialesCN = new Personaje[20];
+        this.admin = new Administrador();
         // Creacion Colas Nickelodeon
         this.colaExcepcionalesNK = new Cola();
         this.colaPromediosNK = new Cola();
@@ -85,19 +96,19 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         historialGanadores = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
-        cola3Avatar = new javax.swing.JTextArea();
+        cola3NK = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        cola3Show = new javax.swing.JTextArea();
+        cola3CN = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
-        cola2Avatar = new javax.swing.JTextArea();
+        cola2NK = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        cola1Avatar = new javax.swing.JTextArea();
+        cola1NK = new javax.swing.JTextArea();
         jScrollPane8 = new javax.swing.JScrollPane();
-        cola1Show = new javax.swing.JTextArea();
+        cola1CN = new javax.swing.JTextArea();
         jScrollPane9 = new javax.swing.JScrollPane();
-        cola2Show = new javax.swing.JTextArea();
+        cola2CN = new javax.swing.JTextArea();
         progresoTiempo = new javax.swing.JProgressBar();
         puntosAvatar = new javax.swing.JLabel();
         puntosShow = new javax.swing.JLabel();
@@ -331,33 +342,33 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         Panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 200, 130));
 
-        cola3Avatar.setEditable(false);
-        cola3Avatar.setBackground(new java.awt.Color(255, 255, 255));
-        cola3Avatar.setColumns(20);
-        cola3Avatar.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        cola3Avatar.setForeground(new java.awt.Color(0, 0, 0));
-        cola3Avatar.setRows(5);
-        jScrollPane4.setViewportView(cola3Avatar);
+        cola3NK.setEditable(false);
+        cola3NK.setBackground(new java.awt.Color(255, 255, 255));
+        cola3NK.setColumns(20);
+        cola3NK.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
+        cola3NK.setForeground(new java.awt.Color(0, 0, 0));
+        cola3NK.setRows(5);
+        jScrollPane4.setViewportView(cola3NK);
 
         Panel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 60, 240));
 
-        cola3Show.setEditable(false);
-        cola3Show.setBackground(new java.awt.Color(255, 255, 255));
-        cola3Show.setColumns(20);
-        cola3Show.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        cola3Show.setForeground(new java.awt.Color(0, 0, 0));
-        cola3Show.setRows(5);
-        jScrollPane5.setViewportView(cola3Show);
+        cola3CN.setEditable(false);
+        cola3CN.setBackground(new java.awt.Color(255, 255, 255));
+        cola3CN.setColumns(20);
+        cola3CN.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
+        cola3CN.setForeground(new java.awt.Color(0, 0, 0));
+        cola3CN.setRows(5);
+        jScrollPane5.setViewportView(cola3CN);
 
         Panel.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 100, 60, 240));
 
-        cola2Avatar.setEditable(false);
-        cola2Avatar.setBackground(new java.awt.Color(255, 255, 255));
-        cola2Avatar.setColumns(20);
-        cola2Avatar.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        cola2Avatar.setForeground(new java.awt.Color(0, 0, 0));
-        cola2Avatar.setRows(5);
-        jScrollPane6.setViewportView(cola2Avatar);
+        cola2NK.setEditable(false);
+        cola2NK.setBackground(new java.awt.Color(255, 255, 255));
+        cola2NK.setColumns(20);
+        cola2NK.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
+        cola2NK.setForeground(new java.awt.Color(0, 0, 0));
+        cola2NK.setRows(5);
+        jScrollPane6.setViewportView(cola2NK);
 
         Panel.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 60, 240));
 
@@ -373,33 +384,33 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jLabel15.setText("N");
         Panel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 40, 37));
 
-        cola1Avatar.setEditable(false);
-        cola1Avatar.setBackground(new java.awt.Color(255, 255, 255));
-        cola1Avatar.setColumns(20);
-        cola1Avatar.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        cola1Avatar.setForeground(new java.awt.Color(0, 0, 0));
-        cola1Avatar.setRows(5);
-        jScrollPane7.setViewportView(cola1Avatar);
+        cola1NK.setEditable(false);
+        cola1NK.setBackground(new java.awt.Color(255, 255, 255));
+        cola1NK.setColumns(20);
+        cola1NK.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
+        cola1NK.setForeground(new java.awt.Color(0, 0, 0));
+        cola1NK.setRows(5);
+        jScrollPane7.setViewportView(cola1NK);
 
         Panel.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 60, 240));
 
-        cola1Show.setEditable(false);
-        cola1Show.setBackground(new java.awt.Color(255, 255, 255));
-        cola1Show.setColumns(20);
-        cola1Show.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        cola1Show.setForeground(new java.awt.Color(0, 0, 0));
-        cola1Show.setRows(5);
-        jScrollPane8.setViewportView(cola1Show);
+        cola1CN.setEditable(false);
+        cola1CN.setBackground(new java.awt.Color(255, 255, 255));
+        cola1CN.setColumns(20);
+        cola1CN.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
+        cola1CN.setForeground(new java.awt.Color(0, 0, 0));
+        cola1CN.setRows(5);
+        jScrollPane8.setViewportView(cola1CN);
 
         Panel.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 100, 60, 240));
 
-        cola2Show.setEditable(false);
-        cola2Show.setBackground(new java.awt.Color(255, 255, 255));
-        cola2Show.setColumns(20);
-        cola2Show.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        cola2Show.setForeground(new java.awt.Color(0, 0, 0));
-        cola2Show.setRows(5);
-        jScrollPane9.setViewportView(cola2Show);
+        cola2CN.setEditable(false);
+        cola2CN.setBackground(new java.awt.Color(255, 255, 255));
+        cola2CN.setColumns(20);
+        cola2CN.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
+        cola2CN.setForeground(new java.awt.Color(0, 0, 0));
+        cola2CN.setRows(5);
+        jScrollPane9.setViewportView(cola2CN);
 
         Panel.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 100, 60, 240));
         Panel.add(progresoTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 160, 20));
@@ -677,8 +688,30 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     }//GEN-LAST:event_tiempoActionPerformed
 
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
-        Personaje personaje = new Personaje(0);
-        JOptionPane.showMessageDialog(rootPane, personaje.nombre + personaje.habilidades + personaje.vida + personaje.fuerza + personaje.agilidad + personaje.calidad);
+        iniciar.setEnabled(false);
+        admin.creacionPersonajesIniciales();
+        admin.mostrarPersonajesIniciales();
+        admin.llenarColasIniciales();
+        
+        System.out.println("COLA ENK");
+        String contenidoENK = colaExcepcionalesNK.recorrido();
+        System.out.println(contenidoENK);
+        System.out.println("COLA PNK");
+        String contenidoPNK = colaPromediosNK.recorrido();
+        System.out.println(contenidoPNK);
+        System.out.println("COLA DNK");
+        String contenidoDNK = colaDeficientesNK.recorrido();
+        System.out.println(contenidoDNK);
+        
+        System.out.println("COLA ECN");
+        String contenidoECN = colaExcepcionalesCN.recorrido();
+        System.out.println(contenidoECN);
+        System.out.println("COLA PCN");
+        String contenidoPCN = colaPromediosCN.recorrido();
+        System.out.println(contenidoPCN);
+        System.out.println("COLA DCN");
+        String contenidoDCN = colaDeficientesCN.recorrido();
+        System.out.println(contenidoDCN);
         
     }//GEN-LAST:event_iniciarActionPerformed
 
@@ -733,12 +766,12 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static javax.swing.JLabel cantidadCola2Show;
     public static javax.swing.JLabel cantidadCola3Avatar;
     public static javax.swing.JLabel cantidadCola3Show;
-    public static javax.swing.JTextArea cola1Avatar;
-    public static javax.swing.JTextArea cola1Show;
-    public static javax.swing.JTextArea cola2Avatar;
-    public static javax.swing.JTextArea cola2Show;
-    public static javax.swing.JTextArea cola3Avatar;
-    public static javax.swing.JTextArea cola3Show;
+    public static javax.swing.JTextArea cola1CN;
+    public static javax.swing.JTextArea cola1NK;
+    public static javax.swing.JTextArea cola2CN;
+    public static javax.swing.JTextArea cola2NK;
+    public static javax.swing.JTextArea cola3CN;
+    public static javax.swing.JTextArea cola3NK;
     public static javax.swing.JTextArea colaRefuerzoAvatar;
     public static javax.swing.JTextArea colaRefuerzoShow;
     public static javax.swing.JLabel contadorCola2Avatar;

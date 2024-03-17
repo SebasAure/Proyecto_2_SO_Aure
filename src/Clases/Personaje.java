@@ -5,6 +5,7 @@
  */
 package Clases;
 
+import Interfaces.VentanaSimulacion;
 import java.util.Random;
 
 /**
@@ -12,6 +13,7 @@ import java.util.Random;
  * @author sebas
  */
 public class Personaje {
+    
     
     public String idPersonaje; //id unico
     public String nombre; // nombre personaje
@@ -27,7 +29,7 @@ public class Personaje {
         switch (idEstudio) {
             // Personaje Nickelodeon
             case 0: 
-                this.idPersonaje = "NK";
+                this.idPersonaje = "NK"+VentanaSimulacion.idDistintivoNK;
                 this.nombre = null;
                 this.habilidades = 0;
                 this.vida = 0;
@@ -35,10 +37,11 @@ public class Personaje {
                 this.agilidad = 0;
                 this.calidad = null;
                 creacionPersonaje(idEstudio);
+                VentanaSimulacion.idDistintivoNK += 1;
                 break;
             // Personaje Cartoon Network
             case 1:
-                this.idPersonaje = "CN";
+                this.idPersonaje = "CN"+VentanaSimulacion.idDistintivoCN;
                 this.nombre = null;
                 this.habilidades = 0;
                 this.vida = 0;
@@ -46,6 +49,7 @@ public class Personaje {
                 this.agilidad = 0;
                 this.calidad = null;
                 creacionPersonaje(idEstudio);
+                VentanaSimulacion.idDistintivoCN += 1;
                 break;
             default:
                 break;

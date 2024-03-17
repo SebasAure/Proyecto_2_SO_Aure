@@ -74,4 +74,18 @@ public class Cola {
     public Personaje infoCabeza() {
         return pfirst.getInfo();
     }
+    
+    public String recorrido() {
+        String palabra = "";
+        Nodo aux = pfirst;
+        if (!isEmpty()) {
+            for (int i = 0; i < size; i++) {
+                if (aux != null) {
+                    palabra += String.valueOf(aux.getInfo().idPersonaje) + "\n";
+                    aux = aux.getNext();
+                }
+            }
+        }
+        return palabra;
+    }
 }
