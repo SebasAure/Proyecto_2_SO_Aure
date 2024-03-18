@@ -6,6 +6,7 @@
 package Clases;
 
 import Interfaces.VentanaSimulacion;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -96,13 +97,63 @@ public class Administrador {
         String colaPCN = VentanaSimulacion.colaPromediosCN.recorrido();
         String colaDCN = VentanaSimulacion.colaDeficientesCN.recorrido();
         
+        
+        VentanaSimulacion.cantidadCola1NK.setText(Integer.toString(VentanaSimulacion.colaExcepcionalesNK.getSize()));
+        VentanaSimulacion.cantidadCola2NK.setText(Integer.toString(VentanaSimulacion.colaPromediosNK.getSize()));
+        VentanaSimulacion.cantidadCola3NK.setText(Integer.toString(VentanaSimulacion.colaDeficientesNK.getSize()));
+        
         VentanaSimulacion.cola1NK.setText(colaENK);
         VentanaSimulacion.cola2NK.setText(colaPNK);
         VentanaSimulacion.cola3NK.setText(colaDNK);
+        
+        VentanaSimulacion.cantidadCola1CN.setText(Integer.toString(VentanaSimulacion.colaExcepcionalesCN.getSize()));
+        VentanaSimulacion.cantidadCola2CN.setText(Integer.toString(VentanaSimulacion.colaPromediosCN.getSize()));
+        VentanaSimulacion.cantidadCola3CN.setText(Integer.toString(VentanaSimulacion.colaDeficientesCN.getSize()));
         
         VentanaSimulacion.cola1CN.setText(colaECN);
         VentanaSimulacion.cola2CN.setText(colaPCN);
         VentanaSimulacion.cola3CN.setText(colaDCN);
         
+    }
+    
+    public static void proximoEnfrentamiento() {
+        // Seleccion Personaje Nickelodeon
+        Personaje personajeNK = null;
+        if (!VentanaSimulacion.colaExcepcionalesNK.isEmpty()) {
+            
+            personajeNK = VentanaSimulacion.colaExcepcionalesNK.getCabeza();
+            VentanaSimulacion.colaExcepcionalesNK.desencolar();
+            
+        } else if (!VentanaSimulacion.colaPromediosNK.isEmpty()) {
+            
+            personajeNK = VentanaSimulacion.colaPromediosNK.getCabeza();
+            VentanaSimulacion.colaPromediosNK.desencolar();
+            
+        } else {
+            
+            personajeNK = VentanaSimulacion.colaDeficientesNK.getCabeza();
+            VentanaSimulacion.colaDeficientesNK.desencolar();
+        }
+        
+        // Seleccion Personaje Cartoon Network
+        Personaje personajeCN = null;
+        if (!VentanaSimulacion.colaExcepcionalesCN.isEmpty()) {
+            
+            personajeCN = VentanaSimulacion.colaExcepcionalesCN.getCabeza();
+            VentanaSimulacion.colaExcepcionalesCN.desencolar();
+            
+        } else if (!VentanaSimulacion.colaPromediosCN.isEmpty()) {
+            
+            personajeCN = VentanaSimulacion.colaPromediosCN.getCabeza();
+            VentanaSimulacion.colaPromediosCN.desencolar();
+            
+        } else {
+            
+            personajeCN = VentanaSimulacion.colaDeficientesCN.getCabeza();
+            VentanaSimulacion.colaDeficientesCN.desencolar();
+        } 
+        //JOptionPane.showMessageDialog(null, personajeNK.idPersonaje + " vs " + personajeCN.idPersonaje);
+        mostrarColas();
+        InteligenciaArtificial.decision(personajeNK, personajeCN);
     }
 }

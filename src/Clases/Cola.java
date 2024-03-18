@@ -71,7 +71,7 @@ public class Cola {
         }
     }
     
-    public Personaje infoCabeza() {
+    public Personaje getCabeza() {
         return pfirst.getInfo();
     }
     
