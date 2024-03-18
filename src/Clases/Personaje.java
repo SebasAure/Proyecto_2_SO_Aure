@@ -17,7 +17,7 @@ public class Personaje {
     
     public String idPersonaje; //id unico
     public String nombre; // nombre personaje
-    public int habilidades; // habilidades del competidor (Valores posibles: 1/2/3/4/5)
+    public String[] habilidades; // habilidades del competidor (Valores posibles: 1/2/3/4/5)
     public int vida; // puntos de vida (Valores posibles: 250/500/750/1000)
     public int fuerza; // puntos de fuerza (Valores posibles: 250/500/750/1000)
     public int agilidad; // puntos de agilidad (Valores posibles: 250/500/750/1000)
@@ -31,7 +31,7 @@ public class Personaje {
             case 0: 
                 this.idPersonaje = "NK"+VentanaSimulacion.idDistintivoNK;
                 this.nombre = null;
-                this.habilidades = 0;
+                this.habilidades = new String[3];
                 this.vida = 0;
                 this.fuerza = 0;
                 this.agilidad = 0;
@@ -43,7 +43,7 @@ public class Personaje {
             case 1:
                 this.idPersonaje = "CN"+VentanaSimulacion.idDistintivoCN;
                 this.nombre = null;
-                this.habilidades = 0;
+                this.habilidades = new String[3];
                 this.vida = 0;
                 this.fuerza = 0;
                 this.agilidad = 0;
@@ -69,32 +69,42 @@ public class Personaje {
                 nombre = personajeNK;
                 switch (personajeNK) {
                     case "Aang":
-                        habilidades += 5;
-                        vida += 750;
+                        habilidades[0] = "Agua";
+                        habilidades[1] = "Fuego";
+                        habilidades[2] = "Aire";
+                        vida += 1750;
                         fuerza += 750;
                         agilidad += 750;
                         break;
                     case "Katara":
-                        habilidades += 3;
-                        vida += 500;
+                        habilidades[0] = "Agua";
+                        habilidades[1] = "- - -";
+                        habilidades[2] = "- - -";
+                        vida += 1500;
                         fuerza += 500;
                         agilidad += 750;
                         break;
                     case "Sokka":
-                        habilidades += 1;
-                        vida += 500;
+                        habilidades[0] = "Agua";
+                        habilidades[1] = "- - -";
+                        habilidades[2] = "- - -";
+                        vida += 1500;
                         fuerza += 500;
                         agilidad += 500;
                         break;
                     case "Zuko":
-                        habilidades += 3;
-                        vida += 500;
+                        habilidades[0] = "Fuego";
+                        habilidades[1] = "- - -";
+                        habilidades[2] = "- - -";
+                        vida += 1500;
                         fuerza += 750;
                         agilidad += 1000;
                         break;
                     case "Ozai":
-                        habilidades += 4;
-                        vida += 750;
+                        habilidades[0] = "Fuego";
+                        habilidades[1] = "Aire";
+                        habilidades[2] = "- - -";
+                        vida += 1750;
                         fuerza += 1000;
                         agilidad += 500;
                         break;
@@ -112,32 +122,42 @@ public class Personaje {
                 nombre = personajeCN;
                 switch (personajeCN) {
                     case "Mordecai":
-                        habilidades += 3;
-                        vida += 750;
+                        habilidades[0] = "Caos";
+                        habilidades[1] = "Chamba";
+                        habilidades[2] = "- - -";
+                        vida += 1750;
                         fuerza += 750;
                         agilidad += 500;
                         break;
                     case "Rigby":
-                        habilidades += 3;
-                        vida += 500;
+                        habilidades[0] = "Caos";
+                        habilidades[1] = "Chamba";
+                        habilidades[2] = "- - -";
+                        vida += 1500;
                         fuerza += 500;
                         agilidad += 1000;
                         break;
                     case "Musculoso":
-                        habilidades += 2;
-                        vida += 500;
+                        habilidades[0] = "Caos";
+                        habilidades[1] = "- - -";
+                        habilidades[2] = "- - -";
+                        vida += 1500;
                         fuerza += 1000;
                         agilidad += 250;
                         break;
                     case "Skips":
-                        habilidades += 5;
-                        vida += 1000;
+                        habilidades[0] = "Chamba";
+                        habilidades[1] = "Mistica";
+                        habilidades[2] = "- - -";
+                        vida += 2000;
                         fuerza += 750;
                         agilidad += 500;
                         break;
                     case "Benson":
-                        habilidades += 4;
-                        vida += 500;
+                        habilidades[0] = "Chamba";
+                        habilidades[1] = "- - -";
+                        habilidades[2] = "- - -";
+                        vida += 1500;
                         fuerza += 250;
                         agilidad += 500;
                         break;
@@ -168,14 +188,36 @@ public class Personaje {
         }
         // Definicion calidad
         if (contadorCalidad < 5) {
+            // Si es deficiente los atributos bases empeoran 
             calidad = "Deficiente";
+            vida -= 200;
+            fuerza -= 100;
+            agilidad -= 100;
         } else if ((contadorCalidad == 5) || (contadorCalidad < 8)) {
+            // Si es promedio los atributos bases mejoran ligeramente
             calidad = "Promedio";
+            vida += 200;
+            fuerza += 100;
+            agilidad += 100;
         } else {
+            // Si es excepcional los atributos bases reciben una buena mejora
             calidad = "Excepcional";
+            vida += 400;
+            fuerza += 200;
+            agilidad += 200;
         }
         
         
+    }
+    
+    public int contarHabilidades(Personaje personaje) {
+        int contadorHabilidades = 0;
+        for (int i = 0; i < personaje.habilidades.length; i++) {
+            if (!personaje.habilidades[i].equals("- - -")) {
+                contadorHabilidades += 1;
+            }
+        }
+        return contadorHabilidades;
     }
     
     public String getidPersonaje() {
@@ -194,11 +236,11 @@ public class Personaje {
         this.calidad = calidad;
     }
 
-    public int getHabilidades() {
+    public String[] getHabilidades() {
         return habilidades;
     }
 
-    public void setNro_pantallas(int habilidades) {
+    public void setHabilidades(String[] habilidades) {
         this.habilidades = habilidades;
     }
 

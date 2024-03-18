@@ -34,7 +34,7 @@ public class Administrador {
                     " Vida: " + VentanaSimulacion.personajesInicialesNK[i].vida+
                     " Fuerza: " +VentanaSimulacion.personajesInicialesNK[i].fuerza+
                     " Agildad: " +VentanaSimulacion.personajesInicialesNK[i].agilidad+
-                    " Habilidades: " +VentanaSimulacion.personajesInicialesNK[i].habilidades+
+                    " Habilidades: " +VentanaSimulacion.personajesInicialesNK[i].habilidades[0]+
                     " Calidad: " +VentanaSimulacion.personajesInicialesNK[i].calidad);
            
         }
@@ -45,7 +45,7 @@ public class Administrador {
                     " Vida: " + VentanaSimulacion.personajesInicialesCN[i].vida+
                     " Fuerza: " +VentanaSimulacion.personajesInicialesCN[i].fuerza+
                     " Agildad: " +VentanaSimulacion.personajesInicialesCN[i].agilidad+
-                    " Habilidades: " +VentanaSimulacion.personajesInicialesCN[i].habilidades+
+                    " Habilidades: " +VentanaSimulacion.personajesInicialesCN[i].habilidades[0]+
                     " Calidad: " +VentanaSimulacion.personajesInicialesCN[i].calidad);
         }
     }

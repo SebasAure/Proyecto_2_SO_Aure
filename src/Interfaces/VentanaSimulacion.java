@@ -21,6 +21,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static Personaje competidor;
     public static int idDistintivoNK;
     public static int idDistintivoCN;
+    public static long tiempoDecision;
+    public static int contadorCombates;
     //Colas Nickelodeon
     public static Cola colaExcepcionalesNK;
     public static Cola colaPromediosNK;
@@ -42,9 +44,12 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         initComponents();
         this.idDistintivoCN = 0;
         this.idDistintivoCN = 0;
+        this.tiempoDecision = 10;
+        this.contadorCombates = 0;
         this.personajesInicialesNK = new Personaje[20];
         this.personajesInicialesCN = new Personaje[20];
         this.admin = new Administrador();
+        this.ia = new InteligenciaArtificial();
         // Creacion Colas Nickelodeon
         this.colaExcepcionalesNK = new Cola();
         this.colaPromediosNK = new Cola();
@@ -85,10 +90,10 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         cantidadCola1CN = new javax.swing.JLabel();
         cantidadCola2CN = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        desicion = new javax.swing.JLabel();
+        ganador = new javax.swing.JLabel();
         idNK = new javax.swing.JLabel();
         idCN = new javax.swing.JLabel();
-        habilidadesCN = new javax.swing.JLabel();
+        cantidadHabilidadesCN = new javax.swing.JLabel();
         JLabel50 = new javax.swing.JLabel();
         JLabel52 = new javax.swing.JLabel();
         JLabel53 = new javax.swing.JLabel();
@@ -97,7 +102,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         fuerzaCN = new javax.swing.JLabel();
         JLabel51 = new javax.swing.JLabel();
         JLabel54 = new javax.swing.JLabel();
-        habilidadesNK = new javax.swing.JLabel();
+        cantidadHabilidadesNK = new javax.swing.JLabel();
         JLabel55 = new javax.swing.JLabel();
         vidaNK = new javax.swing.JLabel();
         JLabel56 = new javax.swing.JLabel();
@@ -154,6 +159,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         calidadNK = new javax.swing.JLabel();
         calidadCN = new javax.swing.JLabel();
+        habilidadesCN = new javax.swing.JLabel();
+        habilidadesNK = new javax.swing.JLabel();
         nombreNK = new javax.swing.JLabel();
         nombreCN = new javax.swing.JLabel();
         fondoPersonajeNK = new javax.swing.JTextArea();
@@ -226,7 +233,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         iniciar.setBackground(new java.awt.Color(255, 153, 0));
         iniciar.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 24)); // NOI18N
         iniciar.setForeground(new java.awt.Color(0, 0, 0));
-        iniciar.setText(" >>>> COMBATE <<<<");
+        iniciar.setText(" >>>> INICIAR <<<<");
         iniciar.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         iniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,12 +302,12 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jLabel6.setText("MULTIVERSE SHOWDOWN");
         Panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 40));
 
-        desicion.setBackground(new java.awt.Color(255, 255, 255));
-        desicion.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 14)); // NOI18N
-        desicion.setForeground(new java.awt.Color(255, 255, 255));
-        desicion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        desicion.setText("...");
-        Panel.add(desicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 640, 130, 40));
+        ganador.setBackground(new java.awt.Color(255, 255, 255));
+        ganador.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 14)); // NOI18N
+        ganador.setForeground(new java.awt.Color(255, 255, 255));
+        ganador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ganador.setText("...");
+        Panel.add(ganador, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 640, 130, 40));
 
         idNK.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         idNK.setForeground(new java.awt.Color(255, 255, 255));
@@ -316,31 +323,31 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         idCN.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         Panel.add(idCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 50, 30));
 
-        habilidadesCN.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
-        habilidadesCN.setForeground(new java.awt.Color(255, 255, 255));
-        habilidadesCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        habilidadesCN.setText("----");
-        habilidadesCN.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        Panel.add(habilidadesCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 40, 30));
+        cantidadHabilidadesCN.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        cantidadHabilidadesCN.setForeground(new java.awt.Color(255, 255, 255));
+        cantidadHabilidadesCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cantidadHabilidadesCN.setText("----");
+        cantidadHabilidadesCN.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(cantidadHabilidadesCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 40, 30));
 
         JLabel50.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         JLabel50.setForeground(new java.awt.Color(255, 255, 255));
         JLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel50.setText("H");
+        JLabel50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/habilidadesicon.png"))); // NOI18N
         JLabel50.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         Panel.add(JLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 30, 30));
 
         JLabel52.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         JLabel52.setForeground(new java.awt.Color(255, 255, 255));
         JLabel52.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel52.setText("V");
+        JLabel52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vidaicon.png"))); // NOI18N
         JLabel52.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         Panel.add(JLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, 30, 30));
 
         JLabel53.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         JLabel53.setForeground(new java.awt.Color(255, 255, 255));
         JLabel53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel53.setText("A");
+        JLabel53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agilidadicon.png"))); // NOI18N
         JLabel53.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         Panel.add(JLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 30, 30));
 
@@ -368,28 +375,28 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         JLabel51.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         JLabel51.setForeground(new java.awt.Color(255, 255, 255));
         JLabel51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel51.setText("F");
+        JLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fuerzaicon.png"))); // NOI18N
         JLabel51.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         Panel.add(JLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 30, 30));
 
         JLabel54.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         JLabel54.setForeground(new java.awt.Color(255, 255, 255));
         JLabel54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel54.setText("H");
+        JLabel54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/habilidadesicon.png"))); // NOI18N
         JLabel54.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         Panel.add(JLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 30, 30));
 
-        habilidadesNK.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
-        habilidadesNK.setForeground(new java.awt.Color(255, 255, 255));
-        habilidadesNK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        habilidadesNK.setText("----");
-        habilidadesNK.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        Panel.add(habilidadesNK, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 40, 30));
+        cantidadHabilidadesNK.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        cantidadHabilidadesNK.setForeground(new java.awt.Color(255, 255, 255));
+        cantidadHabilidadesNK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cantidadHabilidadesNK.setText("----");
+        cantidadHabilidadesNK.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(cantidadHabilidadesNK, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 40, 30));
 
         JLabel55.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         JLabel55.setForeground(new java.awt.Color(255, 255, 255));
         JLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel55.setText("V");
+        JLabel55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vidaicon.png"))); // NOI18N
         JLabel55.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         Panel.add(JLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 400, 30, 30));
 
@@ -403,7 +410,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         JLabel56.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         JLabel56.setForeground(new java.awt.Color(255, 255, 255));
         JLabel56.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel56.setText("F");
+        JLabel56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fuerzaicon.png"))); // NOI18N
         JLabel56.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         Panel.add(JLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, 30, 30));
 
@@ -417,7 +424,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         JLabel57.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         JLabel57.setForeground(new java.awt.Color(255, 255, 255));
         JLabel57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel57.setText("A");
+        JLabel57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agilidadicon.png"))); // NOI18N
         JLabel57.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         Panel.add(JLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 30, 30));
 
@@ -735,6 +742,20 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         calidadCN.setText("- - - -");
         Panel.add(calidadCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 560, 130, 40));
 
+        habilidadesCN.setBackground(new java.awt.Color(255, 153, 0));
+        habilidadesCN.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 12)); // NOI18N
+        habilidadesCN.setForeground(new java.awt.Color(255, 153, 0));
+        habilidadesCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        habilidadesCN.setText("(- - -/- - -/- - -)");
+        Panel.add(habilidadesCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 530, 160, 40));
+
+        habilidadesNK.setBackground(new java.awt.Color(255, 153, 0));
+        habilidadesNK.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 12)); // NOI18N
+        habilidadesNK.setForeground(new java.awt.Color(255, 153, 0));
+        habilidadesNK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        habilidadesNK.setText("(- - -/- - -/- - -)");
+        Panel.add(habilidadesNK, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 160, 40));
+
         nombreNK.setBackground(new java.awt.Color(255, 153, 0));
         nombreNK.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 30)); // NOI18N
         nombreNK.setForeground(new java.awt.Color(255, 153, 0));
@@ -871,7 +892,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoActionPerformed
-        admin.proximoEnfrentamiento();
+        ia.tiempoDecision();
         
         
     }//GEN-LAST:event_tiempoActionPerformed
@@ -881,7 +902,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         admin.creacionPersonajesIniciales();
         admin.mostrarPersonajesIniciales();
         admin.llenarColasIniciales();
-        //ia.start();
+        ia.start();
         
         System.out.println("COLA ENK");
         String contenidoENK = colaExcepcionalesNK.recorrido();
@@ -966,6 +987,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static javax.swing.JLabel cantidadCola2NK;
     public static javax.swing.JLabel cantidadCola3CN;
     public static javax.swing.JLabel cantidadCola3NK;
+    public static javax.swing.JLabel cantidadHabilidadesCN;
+    public static javax.swing.JLabel cantidadHabilidadesNK;
     public static javax.swing.JTextArea cola1CN;
     public static javax.swing.JTextArea cola1NK;
     public static javax.swing.JTextArea cola2CN;
@@ -978,14 +1001,14 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static javax.swing.JLabel contadorCola2Show;
     public static javax.swing.JLabel contadorCola3Avatar;
     public static javax.swing.JLabel contadorCola3Show;
-    public static javax.swing.JLabel desicion;
     private javax.swing.JLabel estadoAdmin;
-    private javax.swing.JLabel estadoIA;
+    public static javax.swing.JLabel estadoIA;
     private javax.swing.JLabel fondo;
     public static javax.swing.JTextArea fondoPersonajeCN;
     public static javax.swing.JTextArea fondoPersonajeNK;
     public static javax.swing.JLabel fuerzaCN;
     public static javax.swing.JLabel fuerzaNK;
+    public static javax.swing.JLabel ganador;
     public static javax.swing.JLabel habilidadesCN;
     public static javax.swing.JLabel habilidadesNK;
     public static javax.swing.JTextArea historialGanadores;
