@@ -22,8 +22,11 @@ public class InteligenciaArtificial extends Thread{
             try {
                 VentanaSimulacion.contadorRondas += 1;
                 VentanaSimulacion.ronda.setText(Integer.toString(VentanaSimulacion.contadorRondas));
+                // Posibilidad de crear nuevos personajes
                 Administrador.creacionNuevosPersonajes();
-                VentanaSimulacion.estadoIA.setText("esperando");
+                // Control de inanicion
+                Administrador.controlarInanicion();
+                
                 // Limpiar info personaje Nickelodeon
                 VentanaSimulacion.nombreNK.setText("----");
                 VentanaSimulacion.habilidadesNK.setText("(- - -/- - -/- - -)");
@@ -44,7 +47,11 @@ public class InteligenciaArtificial extends Thread{
                 VentanaSimulacion.calidadCN.setText("- - - -");
                 // Limpiar info ganador
                 VentanaSimulacion.ganador.setText("- - - -");
+                
+                // "Espera" durante X cantidad de segundos
+                VentanaSimulacion.estadoIA.setText("esperando");
                 Thread.sleep(VentanaSimulacion.tiempoDecision*1000);
+                // Selecciona los competidores que recibira la IA
                 Administrador.proximoEnfrentamiento();
             } catch (InterruptedException ex) {
                 Logger.getLogger(InteligenciaArtificial.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,7 +113,7 @@ public class InteligenciaArtificial extends Thread{
     }
     
     public static void combate(Personaje personajeNK, Personaje personajeCN) {
-        VentanaSimulacion.estadoIA.setText("anunciando resultado del COMBATE");
+        VentanaSimulacion.estadoIA.setText("anunciando COMBATE");
         VentanaSimulacion.ganador.setText("- - - -");
         // Se crean variales PODER para el personaje de Nickelodeon
         int poderBaseNK = 0;

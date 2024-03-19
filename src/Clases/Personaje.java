@@ -22,10 +22,10 @@ public class Personaje {
     public int fuerza; // puntos de fuerza (Valores posibles: 250/500/750/1000)
     public int agilidad; // puntos de agilidad (Valores posibles: 250/500/750/1000)
     public String calidad; // (Valores posibles: excepcional/promedio/deficiente)
-    public int contadorCola;
+    public int contadorInanicion;
     
     public Personaje(int idEstudio) {
-        this.contadorCola = 0;
+        this.contadorInanicion = 0;
         switch (idEstudio) {
             // Personaje Nickelodeon
             case 0: 
@@ -210,6 +210,7 @@ public class Personaje {
         
     }
     
+    // Retorna la cantidad de habilidades que tiene el personaje
     public int contarHabilidades(Personaje personaje) {
         int contadorHabilidades = 0;
         for (int i = 0; i < personaje.habilidades.length; i++) {

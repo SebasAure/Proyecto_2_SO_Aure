@@ -25,7 +25,7 @@ public class Administrador {
             VentanaSimulacion.personajesInicialesCN[i] = personajeCN;
         }
     }
-    // FUNCION PARA TESTEAR, ELIMINAR DESPUES
+    // FUNCION PARA TESTEAR, MUESTRA LOS PERSONAJES CREADOS INCIALMENTE
     public void mostrarPersonajesIniciales() {
         System.out.println("PERSONAJES NK");
         for (int i = 0; i < VentanaSimulacion.personajesInicialesNK.length; i++) {
@@ -90,15 +90,15 @@ public class Administrador {
     // Muestra en pantalla los ID unicos de los personajes de cada cola
     public static void mostrarColasEstudios() {
         
-        String colaENK = VentanaSimulacion.colaExcepcionalesNK.recorrido();
-        String colaPNK = VentanaSimulacion.colaPromediosNK.recorrido();
-        String colaDNK = VentanaSimulacion.colaDeficientesNK.recorrido();
-        String colaRNK = VentanaSimulacion.colaRefuerzoNK.recorrido();
+        String colaENK = VentanaSimulacion.colaExcepcionalesNK.infoIdColas();
+        String colaPNK = VentanaSimulacion.colaPromediosNK.infoIdColas();
+        String colaDNK = VentanaSimulacion.colaDeficientesNK.infoIdColas();
+        String colaRNK = VentanaSimulacion.colaRefuerzoNK.infoIdColas();
         
-        String colaECN = VentanaSimulacion.colaExcepcionalesCN.recorrido();
-        String colaPCN = VentanaSimulacion.colaPromediosCN.recorrido();
-        String colaDCN = VentanaSimulacion.colaDeficientesCN.recorrido();
-        String colaRCN = VentanaSimulacion.colaRefuerzoCN.recorrido();
+        String colaECN = VentanaSimulacion.colaExcepcionalesCN.infoIdColas();
+        String colaPCN = VentanaSimulacion.colaPromediosCN.infoIdColas();
+        String colaDCN = VentanaSimulacion.colaDeficientesCN.infoIdColas();
+        String colaRCN = VentanaSimulacion.colaRefuerzoCN.infoIdColas();
         
         if (!VentanaSimulacion.colaRefuerzoNK.isEmpty()) {
             double salidaRefuerzoNK = Math.random();
@@ -146,10 +146,11 @@ public class Administrador {
     
     // Muestra en pantalla los ganadores historicos de los combates
     public static void mostrarColaGanadores() {
-        String colaHistorial = VentanaSimulacion.colaHistorialGanadores.recorridoHistorial();
+        String colaHistorial = VentanaSimulacion.colaHistorialGanadores.infoColaGanadores();
         VentanaSimulacion.historialGanadores.setText(colaHistorial);
     }
     
+    //Crea (1) personaje nuevo por estudio cada dos rondas con una probabilidad del 80%
     public static void creacionNuevosPersonajes() {
         VentanaSimulacion.contadorPersonajesNuevos += 1;
         if (VentanaSimulacion.contadorPersonajesNuevos == 2) {            
@@ -193,6 +194,7 @@ public class Administrador {
         }
     }
     
+    // Selecciona los proximos personajes que recibira la IA
     public static void proximoEnfrentamiento() {
         // Seleccion Personaje Nickelodeon
         Personaje personajeNK = null;
@@ -229,8 +231,48 @@ public class Administrador {
             personajeCN = VentanaSimulacion.colaDeficientesCN.getCabeza();
             VentanaSimulacion.colaDeficientesCN.desencolar();
         } 
-        //JOptionPane.showMessageDialog(null, personajeNK.idPersonaje + " vs " + personajeCN.idPersonaje);
         mostrarColasEstudios();
         InteligenciaArtificial.decision(personajeNK, personajeCN);
+    }
+    
+    // Control para prevenir la inanicion de las colas Deficiente y Promedio de cada estudio 
+    //(que los personajes se queden esperando por su turno por mucho tiempo)
+    public static void controlarInanicion() {
+        
+        VentanaSimulacion.colaDeficientesNK.contarRonda();  
+        VentanaSimulacion.colaPromediosNK.contarRonda();
+        
+        VentanaSimulacion.colaDeficientesCN.contarRonda();
+        VentanaSimulacion.colaPromediosCN.contarRonda();
+        
+        // Control inancion Nickelodeon
+        if (!VentanaSimulacion.colaDeficientesNK.isEmpty() && VentanaSimulacion.colaDeficientesNK.getCabeza().contadorInanicion == 8) {
+            VentanaSimulacion.colaPromediosNK.encolar(VentanaSimulacion.colaDeficientesNK.getCabeza());
+            VentanaSimulacion.colaDeficientesNK.desencolar();
+        } 
+        
+        if (!VentanaSimulacion.colaPromediosNK.isEmpty() && VentanaSimulacion.colaPromediosNK.getCabeza().contadorInanicion == 8) {
+            VentanaSimulacion.colaExcepcionalesNK.encolar(VentanaSimulacion.colaPromediosNK.getCabeza());
+            VentanaSimulacion.colaPromediosNK.desencolar();
+        } 
+        
+        // Control inanicion Cartoon Network
+        if (!VentanaSimulacion.colaDeficientesCN.isEmpty() && VentanaSimulacion.colaDeficientesCN.getCabeza().contadorInanicion == 8) {
+            VentanaSimulacion.colaPromediosCN.encolar(VentanaSimulacion.colaDeficientesCN.getCabeza());
+            VentanaSimulacion.colaDeficientesCN.desencolar();
+        } 
+        
+        if (!VentanaSimulacion.colaPromediosCN.isEmpty() && VentanaSimulacion.colaPromediosCN.getCabeza().contadorInanicion == 8) {
+            VentanaSimulacion.colaExcepcionalesCN.encolar(VentanaSimulacion.colaPromediosCN.getCabeza());
+            VentanaSimulacion.colaPromediosCN.desencolar();
+        } 
+        
+        //Reinicio contadores Nickelodeon
+        VentanaSimulacion.colaDeficientesNK.reinciarContadoresInanicion();
+        VentanaSimulacion.colaPromediosNK.reinciarContadoresInanicion();
+        
+        //Reinicio contadores Nickelodeon
+        VentanaSimulacion.colaDeficientesCN.reinciarContadoresInanicion();
+        VentanaSimulacion.colaPromediosCN.reinciarContadoresInanicion();
     }
 }

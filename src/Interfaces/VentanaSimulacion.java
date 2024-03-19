@@ -92,7 +92,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         tiempo = new javax.swing.JToggleButton();
         iniciar = new javax.swing.JToggleButton();
         cantidadCola1NK = new javax.swing.JLabel();
-        contadorCola3Avatar = new javax.swing.JLabel();
         cantidadCola2NK = new javax.swing.JLabel();
         JLabel40 = new javax.swing.JLabel();
         JLabel41 = new javax.swing.JLabel();
@@ -121,11 +120,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         JLabel57 = new javax.swing.JLabel();
         agilidadNK = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         cantidadCola3NK = new javax.swing.JLabel();
-        contadorCola2Avatar = new javax.swing.JLabel();
-        contadorCola2Show = new javax.swing.JLabel();
-        contadorCola3Show = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         victoriasNK = new javax.swing.JLabel();
@@ -150,7 +145,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         cola1CN = new javax.swing.JTextArea();
         jScrollPane9 = new javax.swing.JScrollPane();
         cola2CN = new javax.swing.JTextArea();
-        progresoTiempo = new javax.swing.JProgressBar();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -218,19 +212,19 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         JLabel37.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         JLabel37.setForeground(new java.awt.Color(255, 255, 255));
         JLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel37.setText("#3");
+        JLabel37.setText("Deficiente");
         Panel.add(JLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 60, 24));
 
         JLabel38.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         JLabel38.setForeground(new java.awt.Color(255, 255, 255));
         JLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel38.setText("#2");
+        JLabel38.setText("Promedio");
         Panel.add(JLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 60, 24));
 
-        JLabel39.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
+        JLabel39.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 11)); // NOI18N
         JLabel39.setForeground(new java.awt.Color(255, 255, 255));
         JLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel39.setText("#1");
+        JLabel39.setText("Excepcional");
         Panel.add(JLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 60, 24));
 
         tiempo.setBackground(new java.awt.Color(255, 153, 0));
@@ -263,34 +257,28 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         cantidadCola1NK.setText("0");
         Panel.add(cantidadCola1NK, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 60, 20));
 
-        contadorCola3Avatar.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 12)); // NOI18N
-        contadorCola3Avatar.setForeground(new java.awt.Color(255, 255, 255));
-        contadorCola3Avatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        contadorCola3Avatar.setText("0");
-        Panel.add(contadorCola3Avatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 60, 20));
-
         cantidadCola2NK.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         cantidadCola2NK.setForeground(new java.awt.Color(255, 255, 255));
         cantidadCola2NK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantidadCola2NK.setText("0");
         Panel.add(cantidadCola2NK, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 60, 20));
 
-        JLabel40.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
+        JLabel40.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 11)); // NOI18N
         JLabel40.setForeground(new java.awt.Color(255, 255, 255));
         JLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel40.setText("#1");
+        JLabel40.setText("Excepcional");
         Panel.add(JLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, 60, 24));
 
         JLabel41.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         JLabel41.setForeground(new java.awt.Color(255, 255, 255));
         JLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel41.setText("#2");
+        JLabel41.setText("Promedio");
         Panel.add(JLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 60, 60, 24));
 
         JLabel42.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         JLabel42.setForeground(new java.awt.Color(255, 255, 255));
         JLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JLabel42.setText("#3");
+        JLabel42.setText("Deficiente");
         Panel.add(JLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 60, 60, 24));
 
         cantidadCola3CN.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
@@ -315,7 +303,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 204, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("MULTIVERSE SHOWDOWN");
-        Panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 30));
+        Panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 50));
 
         ganador.setBackground(new java.awt.Color(255, 255, 255));
         ganador.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 24)); // NOI18N
@@ -456,40 +444,17 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jLabel10.setText("VS");
         Panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 70, 150));
 
-        jLabel8.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Contador");
-        Panel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 20));
-
         cantidadCola3NK.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         cantidadCola3NK.setForeground(new java.awt.Color(255, 255, 255));
         cantidadCola3NK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantidadCola3NK.setText("0");
         Panel.add(cantidadCola3NK, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 60, 20));
 
-        contadorCola2Avatar.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        contadorCola2Avatar.setForeground(new java.awt.Color(255, 255, 255));
-        contadorCola2Avatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        contadorCola2Avatar.setText("0");
-        Panel.add(contadorCola2Avatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 60, 20));
-
-        contadorCola2Show.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        contadorCola2Show.setForeground(new java.awt.Color(255, 255, 255));
-        contadorCola2Show.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        contadorCola2Show.setText("0");
-        Panel.add(contadorCola2Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, 60, 20));
-
-        contadorCola3Show.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        contadorCola3Show.setForeground(new java.awt.Color(255, 255, 255));
-        contadorCola3Show.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        contadorCola3Show.setText("0");
-        Panel.add(contadorCola3Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 40, 60, 20));
-
         jLabel7.setFont(new java.awt.Font("Franklin Gothic Demi", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 204, 51));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("IA ...");
-        Panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 70, 30));
+        Panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 50, 30));
 
         jLabel17.setFont(new java.awt.Font("Franklin Gothic Demi", 1, 16)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 204, 51));
@@ -515,11 +480,11 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         victoriasCN.setText("0");
         Panel.add(victoriasCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 70, 80, 30));
 
-        estadoIA.setFont(new java.awt.Font("Franklin Gothic Demi", 1, 12)); // NOI18N
+        estadoIA.setFont(new java.awt.Font("Franklin Gothic Demi", 1, 18)); // NOI18N
         estadoIA.setForeground(new java.awt.Color(255, 204, 51));
         estadoIA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         estadoIA.setText("- - - -");
-        Panel.add(estadoIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 210, 30));
+        Panel.add(estadoIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 230, 30));
 
         ronda.setFont(new java.awt.Font("Franklin Gothic Demi", 1, 24)); // NOI18N
         ronda.setForeground(new java.awt.Color(255, 204, 51));
@@ -545,7 +510,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jScrollPane1.setViewportView(historialGanadores);
         historialGanadores.getAccessibleContext().setAccessibleDescription("");
 
-        Panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 220, 100));
+        Panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 220, 130));
 
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -637,7 +602,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jScrollPane9.setViewportView(cola2CN);
 
         Panel.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 100, 60, 240));
-        Panel.add(progresoTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 240, 30));
 
         jLabel12.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -681,7 +645,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Historial de Ganadores");
-        Panel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 220, -1));
+        Panel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 220, -1));
 
         jLabel22.setFont(new java.awt.Font("Franklin Gothic Demi", 1, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 204, 51));
@@ -939,30 +903,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
         iniciar.setEnabled(false);
         admin.creacionPersonajesIniciales();
-        admin.mostrarPersonajesIniciales();
         admin.llenarColasIniciales();
-        ia.start();
-        
-        System.out.println("COLA ENK");
-        String contenidoENK = colaExcepcionalesNK.recorrido();
-        System.out.println(contenidoENK);
-        System.out.println("COLA PNK");
-        String contenidoPNK = colaPromediosNK.recorrido();
-        System.out.println(contenidoPNK);
-        System.out.println("COLA DNK");
-        String contenidoDNK = colaDeficientesNK.recorrido();
-        System.out.println(contenidoDNK);
-        
-        System.out.println("COLA ECN");
-        String contenidoECN = colaExcepcionalesCN.recorrido();
-        System.out.println(contenidoECN);
-        System.out.println("COLA PCN");
-        String contenidoPCN = colaPromediosCN.recorrido();
-        System.out.println(contenidoPCN);
-        System.out.println("COLA DCN");
-        String contenidoDCN = colaDeficientesCN.recorrido();
-        System.out.println(contenidoDCN);
-        
+        ia.start();        
     }//GEN-LAST:event_iniciarActionPerformed
 
     /**
@@ -1036,10 +978,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static javax.swing.JTextArea cola3NK;
     public static javax.swing.JTextArea cola4CN;
     public static javax.swing.JTextArea cola4NK;
-    public static javax.swing.JLabel contadorCola2Avatar;
-    public static javax.swing.JLabel contadorCola2Show;
-    public static javax.swing.JLabel contadorCola3Avatar;
-    public static javax.swing.JLabel contadorCola3Show;
     public static javax.swing.JLabel estadoIA;
     private javax.swing.JLabel fondo;
     public static javax.swing.JTextArea fondoPersonajeCN;
@@ -1092,7 +1030,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1104,7 +1041,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     public static javax.swing.JLabel nombreCN;
     public static javax.swing.JLabel nombreNK;
-    public static javax.swing.JProgressBar progresoTiempo;
     public static javax.swing.JLabel ronda;
     private javax.swing.JToggleButton tiempo;
     public static javax.swing.JTextArea tituloAVA;

@@ -76,14 +76,14 @@ public class Cola {
     public Personaje getCabeza() {
         return pfirst.getInfo();
     }
-    
-    public String recorrido() {
+    // Funcion hecha para las colas de los estudios. Recorre la cola para imprimir el ID del personaje
+    public String infoIdColas() {
         String palabra = "";
         Nodo aux = pfirst;
         if (!isEmpty()) {
             for (int i = 0; i < size; i++) {
                 if (aux != null) {
-                    palabra += String.valueOf(aux.getInfo().idPersonaje) + "\n";
+                    palabra += "    "+String.valueOf(aux.getInfo().idPersonaje) + "\n";
                     aux = aux.getNext();
                 }
             }
@@ -91,17 +91,48 @@ public class Cola {
         return palabra;
     }
     
-    public String recorridoHistorial() {
+    // Funcion hecha para la cola de ganadores. Recorre la cola para imprimir el numero de combate, el nombre del ganador y su ID
+    public String infoColaGanadores() {
         String palabra = "";
         Nodo aux = pfirst;
         if (!isEmpty()) {
             for (int i = 0; i < size; i++) {
                 if (aux != null) {
-                    palabra += "Combate "+(i+1)+": "+String.valueOf(aux.getInfo().nombre)+" ("+String.valueOf(aux.getInfo().idPersonaje)+ ")" + "\n";
+                    palabra += "          Combate "+(i+1)+": "+String.valueOf(aux.getInfo().nombre)+" ("+String.valueOf(aux.getInfo().idPersonaje)+ ")" + "\n";
                     aux = aux.getNext();
                 }
             }
         }
         return palabra;
+    }
+    
+    //Recorre la cola y aumenta el contador de inanicion de cada personaje
+    public void contarRonda() {
+
+        Nodo aux = pfirst;
+        if (!isEmpty()) {
+            for (int i = 0; i < size; i++) {
+                if (aux != null) {
+                    aux.getInfo().contadorInanicion += 1;
+                    aux = aux.getNext();
+                }
+            }
+        }
+    }
+    
+    // Reincia los contadores de inanicion cada vez que este llegue a 8
+    public void reinciarContadoresInanicion() {
+
+        Nodo aux = pfirst;
+        if (!isEmpty()) {
+            for (int i = 0; i < size; i++) {
+                if (aux != null) {
+                    if (aux.getInfo().contadorInanicion == 8) {
+                        aux.getInfo().contadorInanicion -= 8;
+                    }
+                    aux = aux.getNext();
+                }
+            }
+        }
     }
 }
