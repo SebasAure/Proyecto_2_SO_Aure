@@ -20,11 +20,36 @@ public class InteligenciaArtificial extends Thread{
     public void run() {
         while (true) {            
             try {
+                VentanaSimulacion.contadorRondas += 1;
+                VentanaSimulacion.ronda.setText(Integer.toString(VentanaSimulacion.contadorRondas));
+                Administrador.creacionNuevosPersonajes();
+                VentanaSimulacion.estadoIA.setText("esperando");
+                // Limpiar info personaje Nickelodeon
+                VentanaSimulacion.nombreNK.setText("----");
+                VentanaSimulacion.habilidadesNK.setText("(- - -/- - -/- - -)");
+                VentanaSimulacion.cantidadHabilidadesNK.setText("----");
+                VentanaSimulacion.vidaNK.setText("----");
+                VentanaSimulacion.fuerzaNK.setText("----");
+                VentanaSimulacion.agilidadNK.setText("----");
+                VentanaSimulacion.idNK.setText("NK--");
+                VentanaSimulacion.calidadNK.setText("- - - -");
+                // Limpiar info personaje Cartoon Network
+                VentanaSimulacion.nombreCN.setText("----");
+                VentanaSimulacion.habilidadesCN.setText("(- - -/- - -/- - -)");
+                VentanaSimulacion.cantidadHabilidadesCN.setText("----");
+                VentanaSimulacion.vidaCN.setText("----");
+                VentanaSimulacion.fuerzaCN.setText("----");
+                VentanaSimulacion.agilidadCN.setText("----");
+                VentanaSimulacion.idCN.setText("CN--");
+                VentanaSimulacion.calidadCN.setText("- - - -");
+                // Limpiar info ganador
+                VentanaSimulacion.ganador.setText("- - - -");
+                Thread.sleep(VentanaSimulacion.tiempoDecision*1000);
                 Administrador.proximoEnfrentamiento();
-                this.sleep(VentanaSimulacion.tiempoDecision*1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(InteligenciaArtificial.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
     }
     
@@ -48,18 +73,25 @@ public class InteligenciaArtificial extends Thread{
         VentanaSimulacion.idCN.setText(personajeCN.idPersonaje);
         VentanaSimulacion.calidadCN.setText(personajeCN.calidad);
         
-        Administrador.mostrarColas();
-        
+        Administrador.mostrarColasEstudios();
+        try {
+            
+            VentanaSimulacion.estadoIA.setText("procesando DATOS");
+            Thread.sleep(VentanaSimulacion.tiempoDecision*1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InteligenciaArtificial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         double decision = Math.random();
         if (decision <= 0.4) {
-            VentanaSimulacion.estadoIA.setText("elegió COMBATE");
+            // Toco combate
             combate(personajeNK,personajeCN);
         } else if (decision>0.4 && decision<=0.67) {
-            VentanaSimulacion.estadoIA.setText("elegió EMPATE");
-            empate();
+            // Toco empate
+            empate(personajeNK,personajeCN);
         } else if (decision>0.67){
-            VentanaSimulacion.estadoIA.setText("elegió REFUERZO");
-            refuerzo();
+            // Toco refuerzo
+            refuerzo(personajeNK,personajeCN);
         }
         
     }
@@ -74,6 +106,7 @@ public class InteligenciaArtificial extends Thread{
     }
     
     public static void combate(Personaje personajeNK, Personaje personajeCN) {
+        VentanaSimulacion.estadoIA.setText("anunciando resultado del COMBATE");
         VentanaSimulacion.ganador.setText("- - - -");
         // Se crean variales PODER para el personaje de Nickelodeon
         int poderBaseNK = 0;
@@ -150,17 +183,27 @@ public class InteligenciaArtificial extends Thread{
         verificarEmpateBatalla(personajeNK, personajeCN);
         // Definicion de ganador
         if (personajeNK.vida > personajeCN.vida) {
-            VentanaSimulacion.contadorCombates += 1;
-            VentanaSimulacion.ganador.setText(personajeNK.nombre+" ("+personajeNK.idPersonaje+")");
-            VentanaSimulacion.historialGanadores.setText("Combate "+VentanaSimulacion.contadorCombates+": "+personajeNK.nombre+" ("+personajeNK.idPersonaje+")");
+            VentanaSimulacion.contadorVictoriasNK +=1;
+            VentanaSimulacion.ganador.setText("Ganador: "+personajeNK.nombre+" ("+personajeNK.idPersonaje+")");
+            VentanaSimulacion.victoriasNK.setText(Integer.toString(VentanaSimulacion.contadorVictoriasNK));
+            VentanaSimulacion.colaHistorialGanadores.encolar(personajeNK);
+            Administrador.mostrarColaGanadores();
+            //VentanaSimulacion.historialGanadores.setText("Combate "+VentanaSimulacion.contadorCombates+": "+personajeNK.nombre+" ("+personajeNK.idPersonaje+")");
             
         } else{
-            VentanaSimulacion.contadorCombates += 1;
-            VentanaSimulacion.ganador.setText(personajeCN.nombre+" ("+personajeCN.idPersonaje+")");
-            VentanaSimulacion.historialGanadores.setText("Combate "+VentanaSimulacion.contadorCombates+": "+personajeCN.nombre+" ("+personajeCN.idPersonaje+")");
+            VentanaSimulacion.contadorVictoriasCN +=1;
+            VentanaSimulacion.ganador.setText("Ganador: "+personajeCN.nombre+" ("+personajeCN.idPersonaje+")");
+            VentanaSimulacion.victoriasCN.setText(Integer.toString(VentanaSimulacion.contadorVictoriasCN));
+            VentanaSimulacion.colaHistorialGanadores.encolar(personajeCN);
+            Administrador.mostrarColaGanadores();
+            //VentanaSimulacion.historialGanadores.setText("Combate "+VentanaSimulacion.contadorCombates+": "+personajeCN.nombre+" ("+personajeCN.idPersonaje+")");
 
         }
-        
+        try {
+            Thread.sleep(VentanaSimulacion.tiempoDecision*1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InteligenciaArtificial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
              
@@ -196,9 +239,35 @@ public class InteligenciaArtificial extends Thread{
         }
     }
     
-    public static void empate() {
+    // Manda a cada competidor a la cola de excepcionales o prioridad uno respectiva
+    public static void empate(Personaje personajeNK, Personaje personajeCN) {
+        VentanaSimulacion.estadoIA.setText("anunciando EMPATE");
+        VentanaSimulacion.colaExcepcionalesNK.encolar(personajeNK);
+        VentanaSimulacion.colaExcepcionalesCN.encolar(personajeCN);
+        Administrador.mostrarColasEstudios();
+
+
+        try {
+            Thread.sleep(VentanaSimulacion.tiempoDecision*1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InteligenciaArtificial.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public static void refuerzo() {
+    public static void refuerzo(Personaje personajeNK, Personaje personajeCN) {
+        VentanaSimulacion.estadoIA.setText("anunciando REFUERZO");
+        VentanaSimulacion.colaRefuerzoNK.encolar(personajeNK);
+        VentanaSimulacion.colaRefuerzoCN.encolar(personajeCN);
+        Administrador.mostrarColasEstudios();
+        try {
+            Thread.sleep(VentanaSimulacion.tiempoDecision*1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InteligenciaArtificial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            Thread.sleep(VentanaSimulacion.tiempoDecision*1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InteligenciaArtificial.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

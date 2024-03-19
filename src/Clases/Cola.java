@@ -5,6 +5,8 @@
  */
 package Clases;
 
+import Interfaces.VentanaSimulacion;
+
 /**
  *
  * @author sebas
@@ -82,6 +84,20 @@ public class Cola {
             for (int i = 0; i < size; i++) {
                 if (aux != null) {
                     palabra += String.valueOf(aux.getInfo().idPersonaje) + "\n";
+                    aux = aux.getNext();
+                }
+            }
+        }
+        return palabra;
+    }
+    
+    public String recorridoHistorial() {
+        String palabra = "";
+        Nodo aux = pfirst;
+        if (!isEmpty()) {
+            for (int i = 0; i < size; i++) {
+                if (aux != null) {
+                    palabra += "Combate "+(i+1)+": "+String.valueOf(aux.getInfo().nombre)+" ("+String.valueOf(aux.getInfo().idPersonaje)+ ")" + "\n";
                     aux = aux.getNext();
                 }
             }
