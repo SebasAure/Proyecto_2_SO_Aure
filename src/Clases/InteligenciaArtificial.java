@@ -16,17 +16,23 @@ import javax.swing.JOptionPane;
  */
 public class InteligenciaArtificial extends Thread{
     
+    private boolean colasVacias;
+    
+    public InteligenciaArtificial(){
+    }
+    
     @Override
     public void run() {
         while (true) {            
             try {
                 VentanaSimulacion.contadorRondas += 1;
                 VentanaSimulacion.ronda.setText(Integer.toString(VentanaSimulacion.contadorRondas));
+                // Creacion de personajes nuevos en caso de que se vacien las colas
+                //Administrador.creacionNuevosPersonajesColasVacias();
                 // Posibilidad de crear nuevos personajes
                 Administrador.creacionNuevosPersonajes();
                 // Control de inanicion
                 Administrador.controlarInanicion();
-                
                 // Limpiar info personaje Nickelodeon
                 VentanaSimulacion.nombreNK.setText("----");
                 VentanaSimulacion.habilidadesNK.setText("(- - -/- - -/- - -)");
@@ -60,6 +66,7 @@ public class InteligenciaArtificial extends Thread{
                 VentanaSimulacion.musculosoPic.setVisible(false);
                 VentanaSimulacion.skipsPic.setVisible(false);
                 VentanaSimulacion.bensonPic.setVisible(false);
+                
                 // "Espera" durante X cantidad de segundos
                 VentanaSimulacion.estadoIA.setText("esperando");
                 Thread.sleep(VentanaSimulacion.tiempoDecision*1000);

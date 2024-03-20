@@ -194,6 +194,47 @@ public class Administrador {
         }
     }
     
+    //Crea (1) personaje nuevo por estudio (para cuando las colas quedan vacias)
+    public static void creacionNuevosPersonajesColasVacias() {
+        if ((VentanaSimulacion.colaDeficientesNK.isEmpty() && VentanaSimulacion.colaPromediosNK.isEmpty() && VentanaSimulacion.colaExcepcionalesNK.isEmpty() && VentanaSimulacion.colaRefuerzoNK.isEmpty()) || (VentanaSimulacion.colaDeficientesCN.isEmpty() && VentanaSimulacion.colaPromediosCN.isEmpty() && VentanaSimulacion.colaExcepcionalesCN.isEmpty() && VentanaSimulacion.colaRefuerzoCN.isEmpty())) {            
+            
+            JOptionPane.showMessageDialog(null, "COLAS VACIAS");
+            Personaje personajeNK = new Personaje(0);
+            
+            switch (personajeNK.calidad) {
+                case "Deficiente":
+                    VentanaSimulacion.colaDeficientesNK.encolar(personajeNK);
+                    break;
+                case "Promedio":
+                    VentanaSimulacion.colaPromediosNK.encolar(personajeNK);
+                    break;
+                case "Excepcional":
+                    VentanaSimulacion.colaExcepcionalesNK.encolar(personajeNK);
+                    break;
+                default:
+                    break;
+            }
+            
+            Personaje personajeCN = new Personaje(1);
+            
+            switch (personajeCN.calidad) {
+                case "Deficiente":
+                    VentanaSimulacion.colaDeficientesCN.encolar(personajeCN);
+                    break;
+                case "Promedio":
+                    VentanaSimulacion.colaPromediosCN.encolar(personajeCN);
+                    break;
+                case "Excepcional":
+                    VentanaSimulacion.colaExcepcionalesCN.encolar(personajeCN);
+                    break;
+                default:
+                    break;
+            }
+                
+        }
+        
+    }
+    
     // Selecciona los proximos personajes que recibira la IA
     public static void proximoEnfrentamiento() {
         // Seleccion Personaje Nickelodeon

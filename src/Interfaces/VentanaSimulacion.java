@@ -26,7 +26,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static int contadorPersonajesNuevos;
     public static int contadorVictoriasNK;
     public static int contadorVictoriasCN;
-
     //Colas Nickelodeon
     public static Cola colaExcepcionalesNK;
     public static Cola colaPromediosNK;
@@ -996,7 +995,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         iniciar.setEnabled(false);
         admin.creacionPersonajesIniciales();
         admin.llenarColasIniciales();
-        ia.start();        
+        ia.start();
     }//GEN-LAST:event_iniciarActionPerformed
 
     /**
