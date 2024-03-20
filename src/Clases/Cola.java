@@ -98,7 +98,7 @@ public class Cola {
         if (!isEmpty()) {
             for (int i = 0; i < size; i++) {
                 if (aux != null) {
-                    palabra += "          Combate "+(i+1)+": "+String.valueOf(aux.getInfo().nombre)+" ("+String.valueOf(aux.getInfo().idPersonaje)+ ")" + "\n";
+                    palabra += "          "+String.valueOf(aux.getInfo().nombre)+ " "+String.valueOf(aux.getInfo().calidad)+ " ("+String.valueOf(aux.getInfo().idPersonaje)+ ")" + "\n";
                     aux = aux.getNext();
                 }
             }

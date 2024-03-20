@@ -72,6 +72,18 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         // Creacion Colas Cartoon Network
         this.colaHistorialGanadores = new Cola();
         
+        
+        aangPic.setVisible(false);
+        kataraPic.setVisible(false);
+        sokkaPic.setVisible(false);
+        zukoPic.setVisible(false);
+        ozaiPic.setVisible(false);
+        
+        mordecaiPic.setVisible(false);
+        rigbyPic.setVisible(false);
+        musculosoPic.setVisible(false);
+        skipsPic.setVisible(false);
+        bensonPic.setVisible(false);
     }
 
     /**
@@ -111,6 +123,16 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         agilidadCN = new javax.swing.JLabel();
         fuerzaCN = new javax.swing.JLabel();
         JLabel51 = new javax.swing.JLabel();
+        aangPic = new javax.swing.JLabel();
+        kataraPic = new javax.swing.JLabel();
+        sokkaPic = new javax.swing.JLabel();
+        zukoPic = new javax.swing.JLabel();
+        ozaiPic = new javax.swing.JLabel();
+        rigbyPic = new javax.swing.JLabel();
+        musculosoPic = new javax.swing.JLabel();
+        skipsPic = new javax.swing.JLabel();
+        bensonPic = new javax.swing.JLabel();
+        mordecaiPic = new javax.swing.JLabel();
         JLabel54 = new javax.swing.JLabel();
         cantidadHabilidadesNK = new javax.swing.JLabel();
         JLabel55 = new javax.swing.JLabel();
@@ -381,6 +403,76 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         JLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fuerzaicon.png"))); // NOI18N
         JLabel51.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         Panel.add(JLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 30, 30));
+
+        aangPic.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        aangPic.setForeground(new java.awt.Color(255, 255, 255));
+        aangPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        aangPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/aang.png"))); // NOI18N
+        aangPic.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(aangPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 280, 240));
+
+        kataraPic.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        kataraPic.setForeground(new java.awt.Color(255, 255, 255));
+        kataraPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        kataraPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/katara.png"))); // NOI18N
+        kataraPic.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(kataraPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 280, 240));
+
+        sokkaPic.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        sokkaPic.setForeground(new java.awt.Color(255, 255, 255));
+        sokkaPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        sokkaPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sokka.png"))); // NOI18N
+        sokkaPic.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(sokkaPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 280, 240));
+
+        zukoPic.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        zukoPic.setForeground(new java.awt.Color(255, 255, 255));
+        zukoPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        zukoPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/zuko.png"))); // NOI18N
+        zukoPic.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(zukoPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 280, 240));
+
+        ozaiPic.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        ozaiPic.setForeground(new java.awt.Color(255, 255, 255));
+        ozaiPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ozaiPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ozai.png"))); // NOI18N
+        ozaiPic.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(ozaiPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 280, 240));
+
+        rigbyPic.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        rigbyPic.setForeground(new java.awt.Color(255, 255, 255));
+        rigbyPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rigbyPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/rigby.png"))); // NOI18N
+        rigbyPic.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(rigbyPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 280, 240));
+
+        musculosoPic.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        musculosoPic.setForeground(new java.awt.Color(255, 255, 255));
+        musculosoPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        musculosoPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/musculoso.png"))); // NOI18N
+        musculosoPic.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(musculosoPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 280, 240));
+
+        skipsPic.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        skipsPic.setForeground(new java.awt.Color(255, 255, 255));
+        skipsPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        skipsPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/skips.png"))); // NOI18N
+        skipsPic.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(skipsPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 280, 240));
+
+        bensonPic.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        bensonPic.setForeground(new java.awt.Color(255, 255, 255));
+        bensonPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bensonPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/benson.png"))); // NOI18N
+        bensonPic.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(bensonPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 280, 240));
+
+        mordecaiPic.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
+        mordecaiPic.setForeground(new java.awt.Color(255, 255, 255));
+        mordecaiPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mordecaiPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mordecai.png"))); // NOI18N
+        mordecaiPic.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Panel.add(mordecaiPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 280, 240));
 
         JLabel54.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         JLabel54.setForeground(new java.awt.Color(255, 255, 255));
@@ -886,7 +978,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         fondo.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         fondo.setForeground(new java.awt.Color(255, 255, 255));
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoVinotinto.png"))); // NOI18N
         Panel.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 700));
 
         getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 700));
@@ -958,8 +1050,10 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static javax.swing.JLabel JLabel56;
     public static javax.swing.JLabel JLabel57;
     private javax.swing.JPanel Panel;
+    public static javax.swing.JLabel aangPic;
     public static javax.swing.JLabel agilidadCN;
     public static javax.swing.JLabel agilidadNK;
+    public static javax.swing.JLabel bensonPic;
     public static javax.swing.JLabel calidadCN;
     public static javax.swing.JLabel calidadNK;
     public static javax.swing.JLabel cantidadCola1CN;
@@ -1039,9 +1133,16 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    public static javax.swing.JLabel kataraPic;
+    public static javax.swing.JLabel mordecaiPic;
+    public static javax.swing.JLabel musculosoPic;
     public static javax.swing.JLabel nombreCN;
     public static javax.swing.JLabel nombreNK;
+    public static javax.swing.JLabel ozaiPic;
+    public static javax.swing.JLabel rigbyPic;
     public static javax.swing.JLabel ronda;
+    public static javax.swing.JLabel skipsPic;
+    public static javax.swing.JLabel sokkaPic;
     private javax.swing.JToggleButton tiempo;
     public static javax.swing.JTextArea tituloAVA;
     public static javax.swing.JTextArea tituloRS;
@@ -1049,5 +1150,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static javax.swing.JLabel victoriasNK;
     public static javax.swing.JLabel vidaCN;
     public static javax.swing.JLabel vidaNK;
+    public static javax.swing.JLabel zukoPic;
     // End of variables declaration//GEN-END:variables
 }

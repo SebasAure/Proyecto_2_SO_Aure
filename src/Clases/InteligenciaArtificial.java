@@ -48,6 +48,18 @@ public class InteligenciaArtificial extends Thread{
                 // Limpiar info ganador
                 VentanaSimulacion.ganador.setText("- - - -");
                 
+                //Limpiar imagenes
+                VentanaSimulacion.aangPic.setVisible(false);
+                VentanaSimulacion.kataraPic.setVisible(false);
+                VentanaSimulacion.sokkaPic.setVisible(false);
+                VentanaSimulacion.zukoPic.setVisible(false);
+                VentanaSimulacion.ozaiPic.setVisible(false);
+        
+                VentanaSimulacion.mordecaiPic.setVisible(false);
+                VentanaSimulacion.rigbyPic.setVisible(false);
+                VentanaSimulacion.musculosoPic.setVisible(false);
+                VentanaSimulacion.skipsPic.setVisible(false);
+                VentanaSimulacion.bensonPic.setVisible(false);
                 // "Espera" durante X cantidad de segundos
                 VentanaSimulacion.estadoIA.setText("esperando");
                 Thread.sleep(VentanaSimulacion.tiempoDecision*1000);
@@ -70,6 +82,25 @@ public class InteligenciaArtificial extends Thread{
         VentanaSimulacion.agilidadNK.setText(Integer.toString(personajeNK.agilidad));
         VentanaSimulacion.idNK.setText(personajeNK.idPersonaje);
         VentanaSimulacion.calidadNK.setText(personajeNK.calidad);
+        switch (personajeNK.nombre) {
+            case "Aang":
+                VentanaSimulacion.aangPic.setVisible(true);
+                break;
+            case "Katara":
+                VentanaSimulacion.kataraPic.setVisible(true);
+                break;
+            case "Sokka":
+                VentanaSimulacion.sokkaPic.setVisible(true);
+                break;
+            case "Zuko":
+                VentanaSimulacion.zukoPic.setVisible(true);
+                break;
+            case "Ozai":
+                VentanaSimulacion.ozaiPic.setVisible(true);
+                break;
+            default:
+                break;
+        }
         // Mostrar info personaje Cartoon Network
         VentanaSimulacion.nombreCN.setText(personajeCN.nombre);
         VentanaSimulacion.habilidadesCN.setText("("+personajeCN.habilidades[0]+"/"+personajeCN.habilidades[1]+"/"+personajeCN.habilidades[2]+")");
@@ -79,8 +110,27 @@ public class InteligenciaArtificial extends Thread{
         VentanaSimulacion.agilidadCN.setText(Integer.toString(personajeCN.agilidad));
         VentanaSimulacion.idCN.setText(personajeCN.idPersonaje);
         VentanaSimulacion.calidadCN.setText(personajeCN.calidad);
+        switch (personajeCN.nombre) {
+            case "Mordecai":
+                VentanaSimulacion.mordecaiPic.setVisible(true);
+                break;
+            case "Rigby":
+                VentanaSimulacion.rigbyPic.setVisible(true);
+                break;
+            case "Musculoso":
+                VentanaSimulacion.musculosoPic.setVisible(true);
+                break;
+            case "Skips":
+                VentanaSimulacion.skipsPic.setVisible(true);
+                break;
+            case "Benson":
+                VentanaSimulacion.bensonPic.setVisible(true);
+                break;
+            default:
+                break;
+        }
         
-        Administrador.mostrarColasEstudios();
+        Administrador.actualizarColasEstudios();
         try {
             
             VentanaSimulacion.estadoIA.setText("procesando DATOS");
@@ -194,7 +244,7 @@ public class InteligenciaArtificial extends Thread{
             VentanaSimulacion.ganador.setText("Ganador: "+personajeNK.nombre+" ("+personajeNK.idPersonaje+")");
             VentanaSimulacion.victoriasNK.setText(Integer.toString(VentanaSimulacion.contadorVictoriasNK));
             VentanaSimulacion.colaHistorialGanadores.encolar(personajeNK);
-            Administrador.mostrarColaGanadores();
+            Administrador.actualizarColaGanadores();
             //VentanaSimulacion.historialGanadores.setText("Combate "+VentanaSimulacion.contadorCombates+": "+personajeNK.nombre+" ("+personajeNK.idPersonaje+")");
             
         } else{
@@ -202,7 +252,7 @@ public class InteligenciaArtificial extends Thread{
             VentanaSimulacion.ganador.setText("Ganador: "+personajeCN.nombre+" ("+personajeCN.idPersonaje+")");
             VentanaSimulacion.victoriasCN.setText(Integer.toString(VentanaSimulacion.contadorVictoriasCN));
             VentanaSimulacion.colaHistorialGanadores.encolar(personajeCN);
-            Administrador.mostrarColaGanadores();
+            Administrador.actualizarColaGanadores();
             //VentanaSimulacion.historialGanadores.setText("Combate "+VentanaSimulacion.contadorCombates+": "+personajeCN.nombre+" ("+personajeCN.idPersonaje+")");
 
         }
@@ -251,7 +301,7 @@ public class InteligenciaArtificial extends Thread{
         VentanaSimulacion.estadoIA.setText("anunciando EMPATE");
         VentanaSimulacion.colaExcepcionalesNK.encolar(personajeNK);
         VentanaSimulacion.colaExcepcionalesCN.encolar(personajeCN);
-        Administrador.mostrarColasEstudios();
+        Administrador.actualizarColasEstudios();
 
 
         try {
@@ -265,7 +315,7 @@ public class InteligenciaArtificial extends Thread{
         VentanaSimulacion.estadoIA.setText("anunciando REFUERZO");
         VentanaSimulacion.colaRefuerzoNK.encolar(personajeNK);
         VentanaSimulacion.colaRefuerzoCN.encolar(personajeCN);
-        Administrador.mostrarColasEstudios();
+        Administrador.actualizarColasEstudios();
         try {
             Thread.sleep(VentanaSimulacion.tiempoDecision*1000);
         } catch (InterruptedException ex) {

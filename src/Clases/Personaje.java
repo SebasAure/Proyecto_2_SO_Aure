@@ -190,9 +190,9 @@ public class Personaje {
         if (contadorCalidad < 5) {
             // Si es deficiente los atributos bases empeoran 
             calidad = "Deficiente";
-            vida -= 200;
-            fuerza -= 100;
-            agilidad -= 100;
+            vida -= 100;
+            fuerza -= 50;
+            agilidad -= 50;
         } else if ((contadorCalidad == 5) || (contadorCalidad < 8)) {
             // Si es promedio los atributos bases mejoran ligeramente
             calidad = "Promedio";

@@ -84,11 +84,11 @@ public class Administrador {
                 VentanaSimulacion.colaDeficientesCN.encolar(VentanaSimulacion.personajesInicialesCN[i]);
             }
         }
-        mostrarColasEstudios();
+        actualizarColasEstudios();
     }
     
-    // Muestra en pantalla los ID unicos de los personajes de cada cola
-    public static void mostrarColasEstudios() {
+    // ACTUALIZA LAS COLAS DE LOS ESTUDIOS CON LOS ID DE LOS PERSONAJES
+    public static void actualizarColasEstudios() {
         
         String colaENK = VentanaSimulacion.colaExcepcionalesNK.infoIdColas();
         String colaPNK = VentanaSimulacion.colaPromediosNK.infoIdColas();
@@ -144,8 +144,8 @@ public class Administrador {
         
     }
     
-    // Muestra en pantalla los ganadores historicos de los combates
-    public static void mostrarColaGanadores() {
+    // Actualiza la lista de ganadores historicos de los combates
+    public static void actualizarColaGanadores() {
         String colaHistorial = VentanaSimulacion.colaHistorialGanadores.infoColaGanadores();
         VentanaSimulacion.historialGanadores.setText(colaHistorial);
     }
@@ -231,7 +231,7 @@ public class Administrador {
             personajeCN = VentanaSimulacion.colaDeficientesCN.getCabeza();
             VentanaSimulacion.colaDeficientesCN.desencolar();
         } 
-        mostrarColasEstudios();
+        actualizarColasEstudios();
         InteligenciaArtificial.decision(personajeNK, personajeCN);
     }
     
